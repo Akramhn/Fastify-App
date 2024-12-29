@@ -40,18 +40,18 @@ const authController = {
         return reply.code(401).send({ error: 'Invalid credentials!' });
       }
   
-      // Generate JWT token
+      
       const token = req.server.jwt.sign({ id: user.id, email: user.email });
   
-      // Include user data and token in the response
+      
       reply.send({
         message: 'Login successful!',
         user: {
           id: user.id,
           email: user.email,
-          fullName: user.fullName,  // include any other user info here
+          fullName: user.fullName,  
         },
-        token: token, // you can return the token to be used in session if needed
+        token: token, 
       });
     } catch (err) {
       reply.code(500).send({ error: 'Login failed!', details: err.message });
